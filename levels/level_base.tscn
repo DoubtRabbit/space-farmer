@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://b5p1r4lo43p1g"]
+
+[ext_resource type="Script" uid="uid://cdefals1qsfjs" path="res://level_base.gd" id="1_vmt1o"]
+[ext_resource type="PackedScene" uid="uid://dyc1qcfwrmuxu" path="res://scenes/planet/planet.tscn" id="2_da5si"]
+[ext_resource type="PackedScene" uid="uid://b6mj7a5g5yjpi" path="res://scenes/player/player.tscn" id="3_ep22m"]
+[ext_resource type="Script" uid="uid://blhs7ne6j2qx5" path="res://scenes/player/player.gd" id="4_da5si"]
+
+[node name="LevelBase" type="Node2D" unique_id=400424548]
+script = ExtResource("1_vmt1o")
+
+[node name="Planet" parent="." unique_id=1616248690 instance=ExtResource("2_da5si")]
+position = Vector2(559, 331)
+
+[node name="Player" parent="." unique_id=2004504212 instance=ExtResource("3_ep22m")]
+position = Vector2(350, 329)
+script = ExtResource("4_da5si")
+
+[node name="Projectiles" type="Node2D" parent="." unique_id=190500883]

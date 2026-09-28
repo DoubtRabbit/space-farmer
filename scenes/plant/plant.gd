@@ -1,0 +1,38 @@
+extends StaticBody2D
+class_name Plant
+
+const STATE_0 = preload("uid://dsk30b8hdgyxv")
+const STATE_1 = preload("uid://di3127qi3e7e3")
+const STATE_2 = preload("uid://bdim5resiwutq")
+var growth_state = 1 # track growth state
+
+@onready var sprite: Sprite2D = $Sprite2D
+@onready var growth_cooldown: Timer = $GrowthCooldown
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+func grow_plant() -> void:
+	print("Attempting to grow from growth state ", growth_state)
+	if (growth_cooldown.is_stopped()):
+		growth_cooldown.start(randf_range(1, 5))
+		match growth_state:
+			0:
+				sprite.texture = STATE_0
+				growth_state += 1
+				print("Grew plant to growth state ", growth_state)
+			1:
+				sprite.texture = STATE_1
+				growth_state += 1
+				print("Grew plant to growth state ", growth_state)
+			2:
+				queue_free()
+				print("Plant finished growing! Earned: ")
+
+func water():
+	grow_plant()

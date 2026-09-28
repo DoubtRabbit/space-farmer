@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://jvuv42xdo6mt"]
+
+[ext_resource type="Texture2D" uid="uid://dmaatx0fs22b2" path="res://assets/arrowDown.png" id="1_3u2gl"]
+[ext_resource type="Script" uid="uid://dk7o2c486a4s" path="res://scenes/waterdrop/waterdrop.gd" id="1_o1v24"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3o735"]
+radius = 13.0
+height = 36.0
+
+[node name="Waterdrop" type="Area2D" unique_id=1633190558]
+script = ExtResource("1_o1v24")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=417932630]
+texture = ExtResource("1_3u2gl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=775766743]
+shape = SubResource("CapsuleShape2D_3o735")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

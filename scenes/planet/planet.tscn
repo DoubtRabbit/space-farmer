@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dyc1qcfwrmuxu"]
+
+[ext_resource type="Script" uid="uid://b01rie2l6c2x8" path="res://scenes/planet/planet.gd" id="1_25nq4"]
+[ext_resource type="Texture2D" uid="uid://b6gpeuu5s1cgm" path="res://assets/target_back_outline.png" id="1_invnv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lrejs"]
+radius = 137.0
+
+[node name="Planet" type="StaticBody2D" unique_id=1616248690]
+script = ExtResource("1_25nq4")
+
+[node name="PlantTimer" type="Timer" parent="." unique_id=1712012943]
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1318279866]
+shape = SubResource("CircleShape2D_lrejs")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=466585042]
+scale = Vector2(2, 2)
+texture = ExtResource("1_invnv")
+
+[node name="Plants" type="Node2D" parent="." unique_id=1852134911]
+
+[connection signal="timeout" from="PlantTimer" to="." method="_on_plant_timer_timeout"]

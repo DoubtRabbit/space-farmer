@@ -1,0 +1,35 @@
+extends CharacterBody2D
+
+@onready var projectiles: Node2D = $"../Projectiles"
+@onready var planet: StaticBody2D = $"../Planet"
+const WATERDROP = preload("uid://jvuv42xdo6mt")
+
+
+var speed = 2 # this is in radians
+var CONSTANT_SPEED = 2
+var distance = 250
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	position = planet.global_position + Vector2(0, -distance)
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	var center = planet.global_position
+	var movement = Input.get_axis("LEFT", "RIGHT") * speed
+	global_position = center + (position - center).rotated(movement * delta)
+	look_at(center)
+	rotate(-PI/2)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("WATER"):
+		shoot_water()
+
+
+func shoot_water():
+	var new_drop = WATERDROP.instantiate()
+	new_drop.rotation = rotation # same direction as player
+	new_drop.position = position
+	projectiles.add_child(new_drop)

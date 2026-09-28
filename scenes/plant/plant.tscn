@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://css6cdf7x3m2k"]
+
+[ext_resource type="Script" uid="uid://bl6ujohkm4667" path="res://scenes/plant/plant.gd" id="1_gm68k"]
+[ext_resource type="Texture2D" uid="uid://dsk30b8hdgyxv" path="res://assets/plants/state_0.png" id="1_q18sh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lrejs"]
+radius = 159.99998
+
+[node name="Plant" type="StaticBody2D" unique_id=274980752]
+scale = Vector2(0.15, 0.15)
+script = ExtResource("1_gm68k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=270161497]
+shape = SubResource("CircleShape2D_lrejs")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1167622549]
+texture = ExtResource("1_q18sh")
+
+[node name="GrowthCooldown" type="Timer" parent="." unique_id=371207212]
+one_shot = true
