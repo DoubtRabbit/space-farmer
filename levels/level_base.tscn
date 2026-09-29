@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://b5p1r4lo43p1g"]
 
-[ext_resource type="Script" uid="uid://cdefals1qsfjs" path="res://level_base.gd" id="1_vmt1o"]
+[ext_resource type="Script" uid="uid://cdefals1qsfjs" path="res://levels/level_base.gd" id="1_vmt1o"]
 [ext_resource type="PackedScene" uid="uid://dyc1qcfwrmuxu" path="res://scenes/planet/planet.tscn" id="2_da5si"]
 [ext_resource type="PackedScene" uid="uid://b6mj7a5g5yjpi" path="res://scenes/player/player.tscn" id="3_ep22m"]
 [ext_resource type="Script" uid="uid://blhs7ne6j2qx5" path="res://scenes/player/player.gd" id="4_da5si"]
+[ext_resource type="PackedScene" uid="uid://coc7trwnug3u3" path="res://scenes/gameui/game_ui.tscn" id="5_ep22m"]
 
 [node name="LevelBase" type="Node2D" unique_id=400424548]
 script = ExtResource("1_vmt1o")
@@ -16,3 +17,7 @@ position = Vector2(350, 329)
 script = ExtResource("4_da5si")
 
 [node name="Projectiles" type="Node2D" parent="." unique_id=190500883]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1572704658]
+
+[node name="GameUI" parent="CanvasLayer" unique_id=1643967851 instance=ExtResource("5_ep22m")]

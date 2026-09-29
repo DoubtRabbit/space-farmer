@@ -31,8 +31,16 @@ func grow_plant() -> void:
 				growth_state += 1
 				print("Grew plant to growth state ", growth_state)
 			2:
-				queue_free()
-				print("Plant finished growing! Earned: ")
+				sprite.texture = STATE_2
+				growth_state += 1
+				print("Plant finished growing!")
+			3: 
+				harvest_plant()
+				print("Plant harvested!")
 
-func water():
+func harvest_plant() -> void:
+	queue_free()
+	SignalHub.plant_harvested.emit()
+
+func water() -> void:
 	grow_plant()

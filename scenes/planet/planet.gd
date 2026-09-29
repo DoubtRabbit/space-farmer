@@ -11,7 +11,6 @@ var GROWING_SLOTS = 20 # number of plants that can grow
 var MAX_PLANTS = 5 # number of plants allowed on planet
 var free_spots: Array[int] = [] # array of 1 to GROWING_SLOTS
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	surface_offset = Vector2(0, sprite.texture.get_width())
@@ -19,7 +18,6 @@ func _ready() -> void:
 		free_spots.append(i)
 	spawn_plant()
 	plant_timer.start()
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -39,13 +37,13 @@ func spawn_plant() -> void:
 	new_plant.position = surface_offset.rotated((TAU / GROWING_SLOTS) * new_spot)
 	new_plant.look_at(position)
 	new_plant.rotate(-PI/2)
-	new_plant.tree_exiting.connect(_on_plant_removed.bind(new_plant.new_spot))
+	#new_plant.tree_exiting.connect(_on_plant_removed.bind(new_plant.new_spot))
 	print("Planted plant @: ", new_plant.position)
 
-func _on_plant_removed(freed_spot: int) -> void:
-	free_spots.append(freed_spot) # add the freed spot back into the list of free spots!
-	pass
+#func _on_plant_removed(freed_spot: int) -> void:
+	#free_spots.append(freed_spot) # add the freed spot back into the list of free spots!
+	#pass
 
-func _on_plant_timer_timeout(freed_spot: int) -> void:
+func _on_plant_timer_timeout() -> void:
 	spawn_plant()
 	plant_timer.start(randf_range(1, 5))
