@@ -37,12 +37,12 @@ func spawn_plant() -> void:
 	new_plant.position = surface_offset.rotated((TAU / GROWING_SLOTS) * new_spot)
 	new_plant.look_at(position)
 	new_plant.rotate(-PI/2)
-	#new_plant.tree_exiting.connect(_on_plant_removed.bind(new_plant.new_spot))
+	new_plant.tree_exiting.connect(_on_plant_removed.bind(new_spot))
 	print("Planted plant @: ", new_plant.position)
 
-#func _on_plant_removed(freed_spot: int) -> void:
-	#free_spots.append(freed_spot) # add the freed spot back into the list of free spots!
-	#pass
+func _on_plant_removed(spot: int) -> void:
+	free_spots.append(spot) # add the freed spot back into the list of free spots!
+	pass
 
 func _on_plant_timer_timeout() -> void:
 	spawn_plant()

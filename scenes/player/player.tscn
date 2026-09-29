@@ -6,6 +6,7 @@
 size = Vector2(62, 62)
 
 [node name="Player" type="CharacterBody2D" unique_id=2004504212]
+scale = Vector2(0.75, 0.75)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1609624028]
 shape = SubResource("RectangleShape2D_lrejs")

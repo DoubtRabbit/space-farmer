@@ -7,9 +7,11 @@
 radius = 137.0
 
 [node name="Planet" type="StaticBody2D" unique_id=1616248690]
+scale = Vector2(0.75, 0.75)
 script = ExtResource("1_25nq4")
 
 [node name="PlantTimer" type="Timer" parent="." unique_id=1712012943]
+wait_time = 3.0
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1318279866]
@@ -21,4 +23,5 @@ texture = ExtResource("1_invnv")
 
 [node name="Plants" type="Node2D" parent="." unique_id=1852134911]
 
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="timeout" from="PlantTimer" to="." method="_on_plant_timer_timeout"]

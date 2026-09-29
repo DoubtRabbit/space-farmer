@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bl6ujohkm4667" path="res://scenes/plant/plant.gd" id="1_gm68k"]
 [ext_resource type="Texture2D" uid="uid://dsk30b8hdgyxv" path="res://assets/plants/state_0.png" id="1_q18sh"]
+[ext_resource type="Texture2D" uid="uid://dax5f15eexeug" path="res://assets/plants/exclamation.png" id="3_85esa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lrejs"]
 radius = 159.99998
@@ -18,3 +19,10 @@ texture = ExtResource("1_q18sh")
 
 [node name="GrowthCooldown" type="Timer" parent="." unique_id=371207212]
 one_shot = true
+
+[node name="ThirstyIcon" type="Sprite2D" parent="." unique_id=1404902878]
+position = Vector2(0, -280)
+scale = Vector2(5, 5)
+texture = ExtResource("3_85esa")
+
+[connection signal="timeout" from="GrowthCooldown" to="." method="_on_growth_cooldown_timeout"]
