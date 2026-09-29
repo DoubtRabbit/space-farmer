@@ -1,5 +1,4 @@
 extends CharacterBody2D
-
 @onready var projectiles: Node2D = $"../Projectiles"
 @onready var planet: StaticBody2D = $"../Planet"
 const WATERDROP = preload("uid://jvuv42xdo6mt")
@@ -37,6 +36,7 @@ func shoot_water():
 		new_drop.rotation = rotation # same direction as player
 		new_drop.position = position
 		projectiles.add_child(new_drop)
+		SignalHub.water_shot.emit()
 	elif (current_water - WATER_SHOT < 0):
 		# not enough water
 		print("Not enough water to shoot!")

@@ -2,6 +2,13 @@
 
 [ext_resource type="Script" uid="uid://cg084nl1qwylj" path="res://scenes/gameui/game_ui.gd" id="1_5bmdj"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5bmdj"]
+bg_color = Color(0, 0.6, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [node name="GameUI" type="Control" unique_id=1643967851]
 layout_mode = 3
 anchors_preset = 15
@@ -10,6 +17,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5bmdj")
+
+[node name="Water" type="ProgressBar" parent="." unique_id=1475961372]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -301.5
+offset_right = 301.5
+offset_bottom = 15.0
+grow_horizontal = 2
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.0
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 10)
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_styles/fill = SubResource("StyleBoxFlat_5bmdj")
+show_percentage = false
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=405527638]
 layout_mode = 1
@@ -30,10 +54,5 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "MONEY"
 metadata/_edit_use_anchors_ = true
-
-[node name="Water" type="ProgressBar" parent="." unique_id=1475961372]
-layout_mode = 0
-offset_right = 4.0
-offset_bottom = 27.0
 
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]

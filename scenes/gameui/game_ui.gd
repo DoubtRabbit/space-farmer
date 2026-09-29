@@ -1,5 +1,7 @@
 extends Control
+@onready var player: CharacterBody2D = $"../../Player"
 @onready var money_label: Label = $MarginContainer/Money
+@onready var water_bar: ProgressBar = $Water
 
 var money
 var PLANT_MONEY = 5 # default amount of money harvested
@@ -8,6 +10,9 @@ var PLANT_MONEY = 5 # default amount of money harvested
 func _ready() -> void:
 	money = 0
 	money_label.text = str(money)
+	water_bar.max_value = player.WATER_CAPACITY
+	water_bar.min_value = 0.0
+	water_bar.value = player.current_water
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -24,3 +29,8 @@ func on_plant_harvested() -> void:
 
 func _on_tree_entered() -> void:
 	SignalHub.plant_harvested.connect(on_plant_harvested)
+	SignalHub.water_shot.connect(on_water_shot)
+
+func on_water_shot() -> void:
+	water_bar.value = player.current_water
+	
