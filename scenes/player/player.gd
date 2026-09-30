@@ -7,7 +7,7 @@ const WATERDROP = preload("uid://jvuv42xdo6mt")
 
 var speed = 2 # this is in radians
 var CONSTANT_SPEED = 2
-var distance = 175
+var distance = 125
 var WATER_CAPACITY = 100
 var current_water
 var WATER_SHOT = 10 # quantity of water each shot takes

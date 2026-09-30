@@ -1,6 +1,7 @@
 extends StaticBody2D
 class_name Planet
 
+@onready var game_start_pos := get_viewport_rect().size / 2.0
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var plants: Node2D = $Plants
 @onready var plant_timer: Timer = $PlantTimer
@@ -9,13 +10,14 @@ class_name Planet
 
 const PLANT = preload("res://Scenes/plant/plant.tscn")
 var surface_offset # this is an OFFSET, not global position
-var GROWING_SLOTS = 20 # number of plants that can grow
+var GROWING_SLOTS = 10 # number of plants that can grow
 var MAX_PLANTS = 5 # number of plants allowed on planet
 var free_spots: Array[int] = [] # array of 1 to GROWING_SLOTS
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	surface_offset = Vector2(0, sprite.texture.get_width())
+	position = game_start_pos
+	surface_offset = Vector2(0, sprite.texture.get_width()/1.7)
 	for i in range(0, GROWING_SLOTS):
 		free_spots.append(i)
 	spawn_plant()

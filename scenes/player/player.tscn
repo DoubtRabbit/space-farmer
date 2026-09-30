@@ -13,7 +13,7 @@ size = Vector2(62.66667, 61.333336)
 size = Vector2(62, 62)
 
 [node name="Player" type="CharacterBody2D" unique_id=2004504212 node_paths=PackedStringArray("attack")]
-scale = Vector2(0.75, 0.75)
+scale = Vector2(0.4, 0.4)
 script = ExtResource("1_ca0mu")
 attack = NodePath("BasicShoot")
 

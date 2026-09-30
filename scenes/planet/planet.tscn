@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://dyc1qcfwrmuxu"]
 
 [ext_resource type="Script" uid="uid://b01rie2l6c2x8" path="res://Scenes/planet/planet.gd" id="1_25nq4"]
-[ext_resource type="Texture2D" uid="uid://b6gpeuu5s1cgm" path="res://assets/target_back_outline.png" id="1_invnv"]
 [ext_resource type="PackedScene" uid="uid://c2xbsog7378no" path="res://Components/health_component/health_component.tscn" id="2_25nq4"]
+[ext_resource type="Texture2D" uid="uid://dpevoduqe0noj" path="res://assets/Planet.png" id="3_7d7q5"]
 [ext_resource type="PackedScene" uid="uid://dhrvm8ls0etdo" path="res://Components/hitbox_component/hitbox_component.tscn" id="4_xntnt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lrejs"]
-radius = 137.0
+radius = 97.66155
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3o735"]
-radius = 136.0
+radius = 97.36986
 
 [node name="Planet" type="StaticBody2D" unique_id=1616248690 node_paths=PackedStringArray("health_component", "hitbox_component")]
 scale = Vector2(0.75, 0.75)
@@ -28,8 +28,7 @@ one_shot = true
 shape = SubResource("CircleShape2D_lrejs")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=466585042]
-scale = Vector2(2, 2)
-texture = ExtResource("1_invnv")
+texture = ExtResource("3_7d7q5")
 
 [node name="Plants" type="Node2D" parent="." unique_id=1852134911]
 

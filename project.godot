@@ -21,6 +21,10 @@ SignalHub="*uid://ystxgs2ye43t"
 
 [display]
 
+window/size/viewport_width=800
+window/size/viewport_height=450
+window/size/mode=2
+window/size/resizable=false
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
@@ -57,3 +61,4 @@ textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.12941177, 0.09411765, 0.26666668, 1)

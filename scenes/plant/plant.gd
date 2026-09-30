@@ -1,11 +1,10 @@
 extends StaticBody2D
 class_name Plant
-
-const STATE_0 = preload("uid://dsk30b8hdgyxv")
-const STATE_1 = preload("uid://di3127qi3e7e3")
-const STATE_2 = preload("uid://bdim5resiwutq")
-var growth_state = 1 # track growth state
+const BASIC_FLOWER = preload("uid://bcx5emhwrx1v3")
+var growth_state = -1 # track growth state
 var thirsty = true
+
+# TODO: use enums
 
 @onready var thirsty_icon: Sprite2D = $ThirstyIcon
 @onready var sprite: Sprite2D = $Sprite2D
@@ -23,21 +22,19 @@ func grow_plant() -> void:
 	print("Attempting to grow from growth state ", growth_state)
 	if (thirsty):
 		disable_thirsty()
+		growth_state += 1
 		growth_cooldown.start(randf_range(3, 10))
 		match growth_state:
 			0:
-				sprite.texture = STATE_0
-				growth_state += 1
-				print("Grew plant to growth state ", growth_state)
-			1:
-				sprite.texture = STATE_1
-				growth_state += 1
+				sprite.region_rect = Rect2(0, 0, 48, 48)
 				print("Grew plant to growth state ", growth_state)
 			2:
-				sprite.texture = STATE_2
-				growth_state += 1
+				sprite.region_rect = Rect2(96, 0, 48, 48)
+				print("Grew plant to growth state ", growth_state)
+			4:
+				sprite.region_rect = Rect2(192, 0, 48, 48)
 				print("Plant finished growing!")
-			3: 
+			6: 
 				harvest_plant()
 				print("Plant harvested!")
 
@@ -50,12 +47,23 @@ func water() -> void:
 
 func enable_thirsty() -> void:
 	thirsty = true
-	thirsty_icon.visible = true
+	#thirsty_icon.visible = true
+	growth_state += 1
+	print(growth_state)
+	match growth_state:
+			0:
+				sprite.region_rect = Rect2(48, 0, 48, 48)
+			1:
+				sprite.region_rect = Rect2(144, 0, 48, 48)
+			3:
+				sprite.region_rect = Rect2(240, 0, 48, 48)
+			5:
+				sprite.region_rect = Rect2(192, 0, 48, 48)
 	
 	
 func disable_thirsty() -> void:
 	thirsty = false
-	thirsty_icon.visible = false
+	#thirsty_icon.visible = false
 
 func _on_growth_cooldown_timeout() -> void:
 	enable_thirsty()

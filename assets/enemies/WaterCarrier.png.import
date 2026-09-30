@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsk30b8hdgyxv"
-path="res://.godot/imported/state_0.png-cfb4b9c8ccfe945a2183b16e059d9452.ctex"
+uid="uid://cyxhyu16mecvc"
+path="res://.godot/imported/WaterCarrier.png-5f7b8c3c034263b3365d6c4ce53ecee8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/plants/state_0.png"
-dest_files=["res://.godot/imported/state_0.png-cfb4b9c8ccfe945a2183b16e059d9452.ctex"]
+source_file="res://assets/enemies/WaterCarrier.png"
+dest_files=["res://.godot/imported/WaterCarrier.png-5f7b8c3c034263b3365d6c4ce53ecee8.ctex"]
 
 [params]
 
