@@ -1,16 +1,42 @@
 [gd_scene format=3 uid="uid://b6mj7a5g5yjpi"]
 
 [ext_resource type="Texture2D" uid="uid://smlp2im8y2fw" path="res://icon.svg" id="1_8afob"]
+[ext_resource type="Script" uid="uid://blhs7ne6j2qx5" path="res://Scenes/player/player.gd" id="1_ca0mu"]
+[ext_resource type="PackedScene" uid="uid://c2xbsog7378no" path="res://Components/health_component/health_component.tscn" id="1_dovo2"]
+[ext_resource type="PackedScene" uid="uid://dhrvm8ls0etdo" path="res://Components/hitbox_component/hitbox_component.tscn" id="1_gmlin"]
+[ext_resource type="PackedScene" uid="uid://o21v72lekjhk" path="res://Components/attack/basic_shoot/basic_shoot.tscn" id="4_e41v5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3o735"]
+size = Vector2(62.66667, 61.333336)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lrejs"]
 size = Vector2(62, 62)
 
-[node name="Player" type="CharacterBody2D" unique_id=2004504212]
+[node name="Player" type="CharacterBody2D" unique_id=2004504212 node_paths=PackedStringArray("attack")]
 scale = Vector2(0.75, 0.75)
+script = ExtResource("1_ca0mu")
+attack = NodePath("BasicShoot")
+
+[node name="HitboxComponent" parent="." unique_id=119987984 node_paths=PackedStringArray("health_component") instance=ExtResource("1_gmlin")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=711998052]
+position = Vector2(-0.66666734, -6.357829e-07)
+shape = SubResource("RectangleShape2D_3o735")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1609624028]
 shape = SubResource("RectangleShape2D_lrejs")
 
+[node name="HealthComponent" parent="." unique_id=1020687223 instance=ExtResource("1_dovo2")]
+MAX_HEALTH = 50.0
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=313164725]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_8afob")
+
+[node name="BasicShoot" parent="." unique_id=888382004 node_paths=PackedStringArray("cooldown_timer") instance=ExtResource("4_e41v5")]
+ATTACK_DAMAGE = 5.0
+ATTACK_COOLDOWN = 0.25
+cooldown_timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="BasicShoot" unique_id=1168287494]

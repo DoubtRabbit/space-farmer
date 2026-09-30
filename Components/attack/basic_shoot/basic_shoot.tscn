@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://o21v72lekjhk"]
+
+[ext_resource type="Script" uid="uid://b4hh8jq5j10w3" path="res://Components/attack/basic_shoot/basic_shoot.gd" id="1_fv5q7"]
+
+[node name="BasicShoot" type="Node2D" unique_id=888382004]
+script = ExtResource("1_fv5q7")

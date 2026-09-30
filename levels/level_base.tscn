@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://b5p1r4lo43p1g"]
 
 [ext_resource type="Script" uid="uid://cdefals1qsfjs" path="res://levels/level_base.gd" id="1_vmt1o"]
-[ext_resource type="PackedScene" uid="uid://dyc1qcfwrmuxu" path="res://scenes/planet/planet.tscn" id="2_da5si"]
-[ext_resource type="PackedScene" uid="uid://b6mj7a5g5yjpi" path="res://scenes/player/player.tscn" id="3_ep22m"]
-[ext_resource type="Script" uid="uid://blhs7ne6j2qx5" path="res://scenes/player/player.gd" id="4_da5si"]
-[ext_resource type="PackedScene" uid="uid://coc7trwnug3u3" path="res://scenes/gameui/game_ui.tscn" id="5_ep22m"]
+[ext_resource type="PackedScene" uid="uid://dyc1qcfwrmuxu" path="res://Scenes/planet/planet.tscn" id="2_da5si"]
+[ext_resource type="PackedScene" uid="uid://b6mj7a5g5yjpi" path="res://Scenes/player/player.tscn" id="3_ep22m"]
+[ext_resource type="PackedScene" uid="uid://coc7trwnug3u3" path="res://Scenes/gameui/game_ui.tscn" id="5_ep22m"]
+[ext_resource type="Script" uid="uid://vk1nt1kin0wt" path="res://levels/spawner.gd" id="6_jd1fy"]
+[ext_resource type="PackedScene" uid="uid://c3us3rpkhgs2k" path="res://Scenes/enemies/water_carrier/water_carrier.tscn" id="6_ts4ud"]
 
 [node name="LevelBase" type="Node2D" unique_id=400424548]
 script = ExtResource("1_vmt1o")
@@ -14,10 +15,33 @@ position = Vector2(559, 331)
 
 [node name="Player" parent="." unique_id=2004504212 instance=ExtResource("3_ep22m")]
 position = Vector2(350, 329)
-script = ExtResource("4_da5si")
 
 [node name="Projectiles" type="Node2D" parent="." unique_id=190500883]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1572704658]
 
 [node name="GameUI" parent="CanvasLayer" unique_id=1643967851 instance=ExtResource("5_ep22m")]
+
+[node name="WaterCarrier" parent="." unique_id=1683511076 instance=ExtResource("6_ts4ud")]
+position = Vector2(799, 249)
+
+[node name="Spawner" type="Node2D" parent="." unique_id=77549691]
+script = ExtResource("6_jd1fy")
+
+[node name="Timer" type="Timer" parent="Spawner" unique_id=281359322]
+wait_time = 6.0
+autostart = true
+
+[node name="Marker2D" type="Marker2D" parent="Spawner" unique_id=488903298]
+position = Vector2(88, 557)
+
+[node name="Marker2D2" type="Marker2D" parent="Spawner" unique_id=1944741704]
+position = Vector2(87, 120)
+
+[node name="Marker2D3" type="Marker2D" parent="Spawner" unique_id=874148030]
+position = Vector2(997, 102)
+
+[node name="Marker2D4" type="Marker2D" parent="Spawner" unique_id=546920676]
+position = Vector2(1029, 541)
+
+[connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]

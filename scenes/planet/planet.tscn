@@ -1,14 +1,24 @@
 [gd_scene format=3 uid="uid://dyc1qcfwrmuxu"]
 
-[ext_resource type="Script" uid="uid://b01rie2l6c2x8" path="res://scenes/planet/planet.gd" id="1_25nq4"]
+[ext_resource type="Script" uid="uid://b01rie2l6c2x8" path="res://Scenes/planet/planet.gd" id="1_25nq4"]
 [ext_resource type="Texture2D" uid="uid://b6gpeuu5s1cgm" path="res://assets/target_back_outline.png" id="1_invnv"]
+[ext_resource type="PackedScene" uid="uid://c2xbsog7378no" path="res://Components/health_component/health_component.tscn" id="2_25nq4"]
+[ext_resource type="PackedScene" uid="uid://dhrvm8ls0etdo" path="res://Components/hitbox_component/hitbox_component.tscn" id="4_xntnt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lrejs"]
 radius = 137.0
 
-[node name="Planet" type="StaticBody2D" unique_id=1616248690]
+[sub_resource type="CircleShape2D" id="CircleShape2D_3o735"]
+radius = 136.0
+
+[node name="Planet" type="StaticBody2D" unique_id=1616248690 node_paths=PackedStringArray("health_component", "hitbox_component")]
 scale = Vector2(0.75, 0.75)
 script = ExtResource("1_25nq4")
+health_component = NodePath("HealthComponent")
+hitbox_component = NodePath("HitboxComponent")
+
+[node name="HealthComponent" parent="." unique_id=1020687223 instance=ExtResource("2_25nq4")]
+MAX_HEALTH = 100.0
 
 [node name="PlantTimer" type="Timer" parent="." unique_id=1712012943]
 wait_time = 3.0
@@ -23,5 +33,12 @@ texture = ExtResource("1_invnv")
 
 [node name="Plants" type="Node2D" parent="." unique_id=1852134911]
 
+[node name="HitboxComponent" parent="." unique_id=119987984 node_paths=PackedStringArray("health_component") instance=ExtResource("4_xntnt")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=1055799267]
+shape = SubResource("CircleShape2D_3o735")
+
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="timeout" from="PlantTimer" to="." method="_on_plant_timer_timeout"]
+[connection signal="area_entered" from="HitboxComponent" to="HitboxComponent" method="_on_area_entered"]

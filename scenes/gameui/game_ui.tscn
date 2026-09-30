@@ -1,9 +1,16 @@
 [gd_scene format=3 uid="uid://coc7trwnug3u3"]
 
-[ext_resource type="Script" uid="uid://cg084nl1qwylj" path="res://scenes/gameui/game_ui.gd" id="1_5bmdj"]
+[ext_resource type="Script" uid="uid://cg084nl1qwylj" path="res://Scenes/gameui/game_ui.gd" id="1_5bmdj"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5bmdj"]
-bg_color = Color(0, 0.6, 1, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bhug6"]
+bg_color = Color(0, 0.49677503, 0.8696802, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekmer"]
+bg_color = Color(0.85319763, 0, 0.19707575, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -25,14 +32,34 @@ anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -301.5
 offset_right = 301.5
-offset_bottom = 15.0
+offset_bottom = 10.0
 grow_horizontal = 2
 size_flags_vertical = 1
 size_flags_stretch_ratio = 0.0
 offset_transform_enabled = true
 offset_transform_position = Vector2(0, 10)
 theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
-theme_override_styles/fill = SubResource("StyleBoxFlat_5bmdj")
+theme_override_styles/fill = SubResource("StyleBoxFlat_bhug6")
+show_percentage = false
+
+[node name="PlanetHealth" type="ProgressBar" parent="." unique_id=326265361]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -301.5
+offset_top = -10.0
+offset_right = 301.5
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.0
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -10)
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_styles/fill = SubResource("StyleBoxFlat_ekmer")
 show_percentage = false
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=405527638]
@@ -52,6 +79,7 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+theme_override_font_sizes/font_size = 32
 text = "MONEY"
 metadata/_edit_use_anchors_ = true
 

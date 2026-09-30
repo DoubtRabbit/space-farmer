@@ -4,8 +4,10 @@ class_name Planet
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var plants: Node2D = $Plants
 @onready var plant_timer: Timer = $PlantTimer
+@export var health_component: HealthComponent
+@export var hitbox_component: HitboxComponent
 
-const PLANT = preload("res://scenes/plant/plant.tscn")
+const PLANT = preload("res://Scenes/plant/plant.tscn")
 var surface_offset # this is an OFFSET, not global position
 var GROWING_SLOTS = 20 # number of plants that can grow
 var MAX_PLANTS = 5 # number of plants allowed on planet

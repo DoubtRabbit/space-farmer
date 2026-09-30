@@ -13,8 +13,6 @@ func _process(delta: float) -> void:
 	position += velocity * delta
 	pass
 
-
-
 func _on_body_entered(body: Node2D) -> void:
 	if body is Planet:
 		queue_free() # destroy if hits planet

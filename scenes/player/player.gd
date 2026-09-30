@@ -3,6 +3,8 @@ extends CharacterBody2D
 @onready var planet: StaticBody2D = $"../Planet"
 const WATERDROP = preload("uid://jvuv42xdo6mt")
 
+@export var attack: Attack
+
 var speed = 2 # this is in radians
 var CONSTANT_SPEED = 2
 var distance = 175
@@ -27,6 +29,15 @@ func _process(delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("WATER"):
 		shoot_water()
+	if event.is_action_pressed("ATTACK"):
+		attack.attack()
+
+func collect_water(quantity: float):
+	if (current_water + quantity > WATER_CAPACITY):
+		current_water = WATER_CAPACITY
+	else:
+		current_water += quantity
+	SignalHub.water_collected.emit()
 
 func shoot_water():
 	if (current_water - WATER_SHOT >= 0):

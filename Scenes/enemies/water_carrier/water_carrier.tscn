@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://c3us3rpkhgs2k"]
+
+[ext_resource type="Texture2D" uid="uid://bf6d3v2qbomj2" path="res://assets/enemies/shipBlue_manned.png" id="1_1j8kx"]
+[ext_resource type="Script" uid="uid://1f717vdd444u" path="res://Scenes/enemies/water_carrier/water_carrier.gd" id="1_xi2kl"]
+[ext_resource type="PackedScene" uid="uid://c2xbsog7378no" path="res://Components/health_component/health_component.tscn" id="2_rsmor"]
+[ext_resource type="PackedScene" uid="uid://dhrvm8ls0etdo" path="res://Components/hitbox_component/hitbox_component.tscn" id="3_xi2kl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1j8kx"]
+radius = 19.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lrejs"]
+radius = 20.0
+
+[node name="WaterCarrier" type="RigidBody2D" unique_id=1683511076 node_paths=PackedStringArray("hitbox_component")]
+gravity_scale = 0.0
+script = ExtResource("1_xi2kl")
+hitbox_component = NodePath("HitboxComponent")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=953190715]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_1j8kx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=765270684]
+shape = SubResource("CircleShape2D_1j8kx")
+
+[node name="HealthComponent" parent="." unique_id=1020687223 instance=ExtResource("2_rsmor")]
+
+[node name="HitboxComponent" parent="." unique_id=119987984 node_paths=PackedStringArray("health_component") instance=ExtResource("3_xi2kl")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=446894684]
+shape = SubResource("CircleShape2D_lrejs")
+
+[connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_area_entered"]

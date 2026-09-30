@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://cgjxxpjcg8jbl"]
+
+[ext_resource type="Script" uid="uid://dhoj33x8l7klk" path="res://Scenes/enemies/exploder/exploder.gd" id="1_1nm77"]
+[ext_resource type="Texture2D" uid="uid://b3umhvsq6ti2f" path="res://assets/enemies/shipPink_manned.png" id="1_o0i0r"]
+[ext_resource type="PackedScene" uid="uid://c2xbsog7378no" path="res://Components/health_component/health_component.tscn" id="2_uhfv0"]
+[ext_resource type="PackedScene" uid="uid://dhrvm8ls0etdo" path="res://Components/hitbox_component/hitbox_component.tscn" id="3_1nm77"]
+[ext_resource type="PackedScene" uid="uid://b5yunayl0e7ye" path="res://Components/attack/explode/explode.tscn" id="4_uhfv0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lrejs"]
+radius = 18.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3o735"]
+radius = 22.0
+
+[node name="Exploder" type="StaticBody2D" unique_id=305382726]
+script = ExtResource("1_1nm77")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1846031470]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_o0i0r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1094524538]
+shape = SubResource("CircleShape2D_lrejs")
+
+[node name="HealthComponent" parent="." unique_id=1020687223 instance=ExtResource("2_uhfv0")]
+
+[node name="HitboxComponent" parent="." unique_id=119987984 node_paths=PackedStringArray("health_component") instance=ExtResource("3_1nm77")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=112248922]
+shape = SubResource("CircleShape2D_3o735")
+
+[node name="Explode" parent="." unique_id=637662238 node_paths=PackedStringArray("hitbox") instance=ExtResource("4_uhfv0")]
+hitbox = NodePath("../HitboxComponent")
+ATTACK_DAMAGE = 10.0

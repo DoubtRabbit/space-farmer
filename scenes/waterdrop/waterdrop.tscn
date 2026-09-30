@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://jvuv42xdo6mt"]
 
 [ext_resource type="Texture2D" uid="uid://dmaatx0fs22b2" path="res://assets/arrowDown.png" id="1_3u2gl"]
-[ext_resource type="Script" uid="uid://dk7o2c486a4s" path="res://scenes/waterdrop/waterdrop.gd" id="1_o1v24"]
+[ext_resource type="Script" uid="uid://dk7o2c486a4s" path="res://Scenes/waterdrop/waterdrop.gd" id="1_o1v24"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3o735"]
 radius = 13.0
