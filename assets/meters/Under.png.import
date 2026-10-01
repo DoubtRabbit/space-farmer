@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6gpeuu5s1cgm"
-path="res://.godot/imported/target_back_outline.png-9c3c16925ee45c1e1b44c99613c8b8a6.ctex"
+uid="uid://bfapel1x8qmpg"
+path="res://.godot/imported/Under.png-708aecb827e831bfd9f44a7d38841810.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/target_back_outline.png"
-dest_files=["res://.godot/imported/target_back_outline.png-9c3c16925ee45c1e1b44c99613c8b8a6.ctex"]
+source_file="res://assets/meters/Under.png"
+dest_files=["res://.godot/imported/Under.png-708aecb827e831bfd9f44a7d38841810.ctex"]
 
 [params]
 

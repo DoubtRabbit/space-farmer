@@ -42,6 +42,11 @@ position = Vector2(585, 163)
 
 [node name="Spawner" type="Node2D" parent="." unique_id=77549691]
 script = ExtResource("6_jd1fy")
+min_bubble_time = 1
+max_bubble_time = 2
+
+[node name="BubbleTimer" type="Timer" parent="Spawner" unique_id=1367621986]
+one_shot = true
 
 [node name="Timer" type="Timer" parent="Spawner" unique_id=281359322]
 wait_time = 3.0
@@ -59,4 +64,5 @@ position = Vector2(748, 54)
 [node name="Marker2D4" type="Marker2D" parent="Spawner" unique_id=546920676]
 position = Vector2(734, 401)
 
+[connection signal="timeout" from="Spawner/BubbleTimer" to="Spawner" method="_on_bubble_timer_timeout"]
 [connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]

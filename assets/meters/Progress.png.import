@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bf6d3v2qbomj2"
-path="res://.godot/imported/shipBlue_manned.png-1d898750818df2d1262977415c3511c3.ctex"
+uid="uid://c35y6xpefjjfi"
+path="res://.godot/imported/Progress.png-2994218c57877e9c8c7f13f0b17113ae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemies/shipBlue_manned.png"
-dest_files=["res://.godot/imported/shipBlue_manned.png-1d898750818df2d1262977415c3511c3.ctex"]
+source_file="res://assets/meters/Progress.png"
+dest_files=["res://.godot/imported/Progress.png-2994218c57877e9c8c7f13f0b17113ae.ctex"]
 
 [params]
 

@@ -2,7 +2,7 @@ extends Control
 @onready var player: CharacterBody2D = $"../../Player"
 @onready var planet: Planet = $"../../Planet"
 @onready var money_label: Label = $MarginContainer/Money
-@onready var water_bar: ProgressBar = $Water
+@onready var water_bar: TextureProgressBar = $Water
 @onready var planet_health_bar: ProgressBar = $PlanetHealth
 
 var money

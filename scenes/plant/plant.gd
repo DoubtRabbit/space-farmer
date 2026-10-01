@@ -19,7 +19,6 @@ func _process(delta: float) -> void:
 	pass
 
 func grow_plant() -> void:
-	print("Attempting to grow from growth state ", growth_state)
 	if (thirsty):
 		disable_thirsty()
 		growth_state += 1
