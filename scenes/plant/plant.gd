@@ -44,25 +44,6 @@ func harvest_plant() -> void:
 func water() -> void:
 	grow_plant()
 
-func enable_thirsty() -> void:
-	thirsty = true
-	#thirsty_icon.visible = true
-	growth_state += 1
-	print(growth_state)
-	match growth_state:
-			0:
-				sprite.region_rect = Rect2(48, 0, 48, 48)
-			1:
-				sprite.region_rect = Rect2(144, 0, 48, 48)
-			3:
-				sprite.region_rect = Rect2(240, 0, 48, 48)
-			5:
-				sprite.region_rect = Rect2(192, 0, 48, 48)
-	
-	
 func disable_thirsty() -> void:
 	thirsty = false
 	#thirsty_icon.visible = false
-
-func _on_growth_cooldown_timeout() -> void:
-	enable_thirsty()

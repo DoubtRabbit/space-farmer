@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://b837x04eqj1yn" path="res://assets/Stars.png" id="5_jd1fy"]
 [ext_resource type="Script" uid="uid://vk1nt1kin0wt" path="res://levels/spawner.gd" id="6_jd1fy"]
 [ext_resource type="PackedScene" uid="uid://c3us3rpkhgs2k" path="res://Scenes/enemies/water_carrier/water_carrier.tscn" id="6_ts4ud"]
+[ext_resource type="Script" uid="uid://bua2xc6psq2ff" path="res://levels/bubble_manager.gd" id="8_cnvg6"]
+[ext_resource type="Script" uid="uid://bvha0kemmegbb" path="res://levels/exploder_manager.gd" id="9_p3adb"]
 
 [node name="LevelBase" type="Node2D" unique_id=400424548]
 script = ExtResource("1_vmt1o")
@@ -42,15 +44,6 @@ position = Vector2(585, 163)
 
 [node name="Spawner" type="Node2D" parent="." unique_id=77549691]
 script = ExtResource("6_jd1fy")
-min_bubble_time = 1
-max_bubble_time = 2
-
-[node name="BubbleTimer" type="Timer" parent="Spawner" unique_id=1367621986]
-one_shot = true
-
-[node name="Timer" type="Timer" parent="Spawner" unique_id=281359322]
-wait_time = 3.0
-autostart = true
 
 [node name="Marker2D" type="Marker2D" parent="Spawner" unique_id=488903298]
 position = Vector2(60, 405)
@@ -64,5 +57,23 @@ position = Vector2(748, 54)
 [node name="Marker2D4" type="Marker2D" parent="Spawner" unique_id=546920676]
 position = Vector2(734, 401)
 
-[connection signal="timeout" from="Spawner/BubbleTimer" to="Spawner" method="_on_bubble_timer_timeout"]
-[connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]
+[node name="BubbleManager" type="Node2D" parent="Spawner" unique_id=590211144 node_paths=PackedStringArray("target")]
+script = ExtResource("8_cnvg6")
+target = NodePath("../../Planet")
+min_time = 1.0
+max_time = 10.0
+
+[node name="BubbleTimer" type="Timer" parent="Spawner/BubbleManager" unique_id=1367621986]
+one_shot = true
+
+[node name="ExploderManager" type="Node2D" parent="Spawner" unique_id=1931901935 node_paths=PackedStringArray("target")]
+script = ExtResource("9_p3adb")
+target = NodePath("../../Planet")
+max_time = 5.0
+
+[node name="ExploderTimer" type="Timer" parent="Spawner/ExploderManager" unique_id=281359322]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Spawner/BubbleManager/BubbleTimer" to="Spawner/BubbleManager" method="_on_bubble_timer_timeout"]
+[connection signal="timeout" from="Spawner/ExploderManager/ExploderTimer" to="Spawner/ExploderManager" method="_on_exploder_timer_timeout"]

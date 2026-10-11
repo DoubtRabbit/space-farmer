@@ -23,19 +23,18 @@ script = ExtResource("1_5bmdj")
 
 [node name="Water" type="TextureProgressBar" parent="." unique_id=860795585]
 layout_mode = 1
-anchors_preset = 6
+anchors_preset = 3
 anchor_left = 1.0
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -1.0
-offset_top = -0.5
-offset_bottom = 0.5
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_top = -159.0
 grow_horizontal = 0
-grow_vertical = 2
+grow_vertical = 0
 size_flags_stretch_ratio = 0.0
 offset_transform_enabled = true
-offset_transform_position = Vector2(-10, 0)
+offset_transform_position = Vector2(-10, -10)
 fill_mode = 3
 texture_under = ExtResource("2_44pwp")
 texture_over = ExtResource("3_81b4j")
