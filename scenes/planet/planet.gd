@@ -8,7 +8,9 @@ class_name Planet
 @export var health_component: HealthComponent
 @export var hitbox_component: HitboxComponent
 
-const PLANT = preload("res://Scenes/plant/plant.tscn")
+const SCORE_PLANT = preload("uid://css6cdf7x3m2k")
+const SHIELD_PLANT = preload("uid://csqnvv5rkf5oq")
+
 var surface_offset # this is an OFFSET, not global position
 var GROWING_SLOTS = 10 # number of plants that can grow
 var MAX_PLANTS = 5 # number of plants allowed on planet
@@ -27,6 +29,16 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+func pick_random_plant() -> Plant:
+	var rand = randi_range(0, 1)
+	var plant: Plant
+	match rand:
+		0:
+			plant = SCORE_PLANT.instantiate()
+		1:
+			plant = SHIELD_PLANT.instantiate()
+	return plant
+
 # TODO: make this not spawn every 5 seconds when its maxed out lol. stop the timer!
 func spawn_plant() -> void:
 	print(free_spots)
@@ -34,7 +46,7 @@ func spawn_plant() -> void:
 		# if out of spots OR num spots taken is > MAX_PLANTS
 		print("Tried to plant new plant, all spots taken or hit max allowable plants.")
 		return # skips to end
-	var new_plant = PLANT.instantiate()
+	var new_plant = pick_random_plant()
 	plants.add_child(new_plant)
 	var new_spot = free_spots.pick_random()
 	free_spots.erase(new_spot) # TODO: remember to add it back once we harvest the plant

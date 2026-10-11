@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://csqnvv5rkf5oq"]
+
+[ext_resource type="Script" uid="uid://cdiq5w6gb100l" path="res://Scenes/plants/shield_plant/shield_plant.gd" id="1_f3rex"]
+[ext_resource type="Texture2D" uid="uid://ctdjj0rfb1x6d" path="res://assets/plants/ShieldPlant.png" id="1_k8cf3"]
+[ext_resource type="PackedScene" uid="uid://igasq3ugcdr" path="res://Components/grow_component/grow_component.tscn" id="1_r3tjo"]
+[ext_resource type="AnimationLibrary" uid="uid://bei5ob82t3e4a" path="res://Animations/Plant Animations.res" id="4_f3rex"]
+[ext_resource type="Texture2D" uid="uid://chdb7m6a3g08q" path="res://assets/plants/Shield.png" id="5_5q8im"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0wx3l"]
+radius = 24.020824
+
+[sub_resource type="Animation" id="Animation_f3rex"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5q8im"]
+_data = {
+&"RESET": SubResource("Animation_f3rex")
+}
+
+[node name="ShieldPlant" type="StaticBody2D" unique_id=858674116]
+script = ExtResource("1_f3rex")
+
+[node name="GrowComponent" parent="." unique_id=872446807 node_paths=PackedStringArray("sprite") instance=ExtResource("1_r3tjo")]
+sprite = NodePath("../Pivot/Sprite2D")
+time_to_water = 2.0
+MAX_STATE = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1974933439]
+shape = SubResource("CircleShape2D_0wx3l")
+
+[node name="Pivot" type="Node2D" parent="." unique_id=189237887]
+position = Vector2(0, 24)
+
+[node name="Sprite2D" type="Sprite2D" parent="Pivot" unique_id=1239904798]
+position = Vector2(0, -24)
+texture = ExtResource("1_k8cf3")
+region_enabled = true
+region_rect = Rect2(48, 0, 48, 48)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2088195915]
+libraries/ = SubResource("AnimationLibrary_5q8im")
+"libraries/Plant Animations" = ExtResource("4_f3rex")
+
+[node name="Shield" type="RigidBody2D" parent="." unique_id=1649626739]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Shield" unique_id=434577786]
+position = Vector2(0, -3)
+texture = ExtResource("5_5q8im")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Shield" unique_id=1502838213]
+build_mode = 1
+polygon = PackedVector2Array(-69, -12, -50, -21, -18, -29, 20, -29, 48, -23, 71, -12, 75, -7, 44, -14, 21, -16, -1, -11, -19, -16, -46, -13, -75, -7)
+
+[connection signal="fully_grown" from="GrowComponent" to="." method="_on_grow_component_fully_grown"]
+[connection signal="body_entered" from="Shield" to="." method="_on_shield_body_entered"]

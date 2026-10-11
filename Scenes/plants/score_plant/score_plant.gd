@@ -1,0 +1,13 @@
+extends Plant
+var active: bool = false
+
+func water() -> void:
+	if (is_grown):
+		active = true
+	else:
+		grow_component.water()
+
+# rn doesnt get used!!!!!
+func harvest_plant() -> void: #TODO: can turn this into a component
+	queue_free()
+	SignalHub.plant_harvested.emit()

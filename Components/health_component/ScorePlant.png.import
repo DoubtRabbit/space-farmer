@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcx5emhwrx1v3"
-path="res://.godot/imported/BasicFlower.png-8f649a03e61aebee6f8034fc2f8edbfb.ctex"
+uid="uid://ctqub6egjdvr4"
+path="res://.godot/imported/ScorePlant.png-7418fd8f39214ff258c18ff4dcdd5b05.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/plants/BasicFlower.png"
-dest_files=["res://.godot/imported/BasicFlower.png-8f649a03e61aebee6f8034fc2f8edbfb.ctex"]
+source_file="res://Components/health_component/ScorePlant.png"
+dest_files=["res://.godot/imported/ScorePlant.png-7418fd8f39214ff258c18ff4dcdd5b05.ctex"]
 
 [params]
 

@@ -19,4 +19,3 @@ func damage(attack: Attack) -> void:
 			parent.die()
 		else:
 			parent.queue_free()
-			
