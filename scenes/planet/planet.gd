@@ -25,10 +25,6 @@ func _ready() -> void:
 	spawn_plant()
 	plant_timer.start()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func pick_random_plant() -> Plant:
 	var rand = randi_range(0, 1)
 	var plant: Plant

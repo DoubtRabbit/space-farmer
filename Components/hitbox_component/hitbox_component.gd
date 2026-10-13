@@ -6,3 +6,7 @@ class_name HitboxComponent
 func damage(attack: Attack) -> void:
 	if health_component:
 		health_component.damage(attack)
+
+func die() -> void:
+	if health_component:
+		health_component.die()

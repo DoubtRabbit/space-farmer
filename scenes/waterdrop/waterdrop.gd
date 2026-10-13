@@ -13,9 +13,11 @@ func _process(delta: float) -> void:
 	position += velocity * delta
 	pass
 
+func _on_area_entered(area: Node2D) -> void:
+	if area is Plant:
+		area.water()
+
+
 func _on_body_entered(body: Node2D) -> void:
 	if body is Planet:
 		queue_free() # destroy if hits planet
-	elif body is Plant:
-		body.water()
-	pass # Replace with function body.

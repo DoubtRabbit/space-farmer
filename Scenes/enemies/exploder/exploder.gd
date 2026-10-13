@@ -1,4 +1,4 @@
-extends Node2D
+extends Enemy
 @onready var SPRITE: Sprite2D = $Sprite2D
 const EXPLOSION = preload("uid://behf1ielot7mo")
 @onready var level_base: Node2D = $"."
@@ -40,3 +40,6 @@ func move(delta: float) -> void:
 func _on_timer_timeout() -> void:
 	speed = SECOND_SPEED
 	timer.queue_free()
+
+func die() -> void:
+	explode()

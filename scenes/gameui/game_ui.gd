@@ -19,10 +19,6 @@ func _ready() -> void:
 	planet_health_bar.min_value = 0.0
 	planet_health_bar.value = planet.health_component.health
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 # TODO: create a specific money manager?
 func on_plant_harvested() -> void:
 	print("HARVESTED")

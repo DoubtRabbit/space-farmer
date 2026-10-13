@@ -20,6 +20,8 @@ texture = ExtResource("1_o0i0r")
 [node name="HealthComponent" parent="." unique_id=1020687223 instance=ExtResource("2_uhfv0")]
 
 [node name="HitboxComponent" parent="." unique_id=119987984 node_paths=PackedStringArray("health_component") instance=ExtResource("3_1nm77")]
+collision_layer = 4
+collision_mask = 3
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=112248922]

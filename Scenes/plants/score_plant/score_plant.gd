@@ -2,7 +2,7 @@ extends Plant
 var active: bool = false
 
 func water() -> void:
-	if (is_grown):
+	if (grow_component.is_ready()):
 		active = true
 	else:
 		grow_component.water()

@@ -14,8 +14,11 @@ func damage(attack: Attack) -> void:
 	if (get_parent() is Planet):
 		SignalHub.planet_damaged.emit()
 	if health <= 0:
-		var parent = get_parent()
-		if (parent.has_method("die")):
-			parent.die()
-		else:
-			parent.queue_free()
+		die()
+
+func die() -> void:
+	var parent = get_parent()
+	if (parent.has_method("die")):
+		parent.die()
+	else:
+		parent.queue_free()

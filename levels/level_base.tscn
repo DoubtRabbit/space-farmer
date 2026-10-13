@@ -45,18 +45,6 @@ position = Vector2(585, 163)
 [node name="Spawner" type="Node2D" parent="." unique_id=77549691]
 script = ExtResource("6_jd1fy")
 
-[node name="Marker2D" type="Marker2D" parent="Spawner" unique_id=488903298]
-position = Vector2(60, 405)
-
-[node name="Marker2D2" type="Marker2D" parent="Spawner" unique_id=1944741704]
-position = Vector2(72, 66)
-
-[node name="Marker2D3" type="Marker2D" parent="Spawner" unique_id=874148030]
-position = Vector2(748, 54)
-
-[node name="Marker2D4" type="Marker2D" parent="Spawner" unique_id=546920676]
-position = Vector2(734, 401)
-
 [node name="BubbleManager" type="Node2D" parent="Spawner" unique_id=590211144 node_paths=PackedStringArray("target")]
 script = ExtResource("8_cnvg6")
 target = NodePath("../../Planet")

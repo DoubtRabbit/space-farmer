@@ -14,14 +14,9 @@ func _ready() -> void:
 	timer.start()
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func _on_bubble_timer_timeout() -> void:
 	create_new_bubble()
-	var new_time = randi_range(min_time, max_time) 
+	var new_time = randf_range(min_time, max_time) 
 	timer.start(new_time)
 
 func create_new_bubble() -> void:

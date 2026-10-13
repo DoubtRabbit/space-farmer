@@ -41,13 +41,25 @@ _data = {
 &"RESET": SubResource("Animation_f3rex")
 }
 
-[node name="ShieldPlant" type="StaticBody2D" unique_id=858674116]
+[node name="ShieldPlant" type="Area2D" unique_id=899158840]
+collision_layer = 8
+collision_mask = 2
 script = ExtResource("1_f3rex")
 
+[node name="Shield" type="Area2D" parent="." unique_id=1286651805]
+collision_layer = 8
+collision_mask = 12
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Shield" unique_id=1502838213]
+build_mode = 1
+polygon = PackedVector2Array(-69, -12, -50, -21, -18, -29, 20, -29, 48, -23, 71, -12, 75, -7, 52, 4, 24, 7, 1, 9, -21, 9, -56, 5, -75, -7)
+
+[node name="ShieldTimer" type="Timer" parent="Shield" unique_id=243151443]
+one_shot = true
+
 [node name="GrowComponent" parent="." unique_id=872446807 node_paths=PackedStringArray("sprite") instance=ExtResource("1_r3tjo")]
-sprite = NodePath("../Pivot/Sprite2D")
+sprite = NodePath("../Pivot/PlantSprite")
 time_to_water = 2.0
-MAX_STATE = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1974933439]
 shape = SubResource("CircleShape2D_0wx3l")
@@ -55,7 +67,12 @@ shape = SubResource("CircleShape2D_0wx3l")
 [node name="Pivot" type="Node2D" parent="." unique_id=189237887]
 position = Vector2(0, 24)
 
-[node name="Sprite2D" type="Sprite2D" parent="Pivot" unique_id=1239904798]
+[node name="ShieldSprite" type="Sprite2D" parent="Pivot" unique_id=434577786]
+visible = false
+position = Vector2(0, -27)
+texture = ExtResource("5_5q8im")
+
+[node name="PlantSprite" type="Sprite2D" parent="Pivot" unique_id=1239904798]
 position = Vector2(0, -24)
 texture = ExtResource("1_k8cf3")
 region_enabled = true
@@ -65,16 +82,5 @@ region_rect = Rect2(48, 0, 48, 48)
 libraries/ = SubResource("AnimationLibrary_5q8im")
 "libraries/Plant Animations" = ExtResource("4_f3rex")
 
-[node name="Shield" type="RigidBody2D" parent="." unique_id=1649626739]
-visible = false
-
-[node name="Sprite2D" type="Sprite2D" parent="Shield" unique_id=434577786]
-position = Vector2(0, -3)
-texture = ExtResource("5_5q8im")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Shield" unique_id=1502838213]
-build_mode = 1
-polygon = PackedVector2Array(-69, -12, -50, -21, -18, -29, 20, -29, 48, -23, 71, -12, 75, -7, 44, -14, 21, -16, -1, -11, -19, -16, -46, -13, -75, -7)
-
-[connection signal="fully_grown" from="GrowComponent" to="." method="_on_grow_component_fully_grown"]
-[connection signal="body_entered" from="Shield" to="." method="_on_shield_body_entered"]
+[connection signal="area_entered" from="Shield" to="." method="_on_shield_area_entered"]
+[connection signal="timeout" from="Shield/ShieldTimer" to="." method="_on_shield_timer_timeout"]
