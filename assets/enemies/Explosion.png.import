@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://behf1ielot7mo"
-path="res://.godot/imported/laserBlue_burst.png-5ce4ca0172f7d70e897c2610aba17de3.ctex"
+uid="uid://cfpup4hvq85de"
+path="res://.godot/imported/Explosion.png-f81fec9b1bb7b176a7fc4c2c5c5dcb66.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/laserBlue_burst.png"
-dest_files=["res://.godot/imported/laserBlue_burst.png-5ce4ca0172f7d70e897c2610aba17de3.ctex"]
+source_file="res://assets/enemies/Explosion.png"
+dest_files=["res://.godot/imported/Explosion.png-f81fec9b1bb7b176a7fc4c2c5c5dcb66.ctex"]
 
 [params]
 
